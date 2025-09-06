@@ -65,7 +65,8 @@ jobs:
   build-for-windows-flutter:
     name: ${{ matrix.job.target }}
     needs: [build-RustDeskTempTopMostWindow, generate-bridge]
-    runs-on: ${{ matrix.job.os }}
+    runs-on: self-hosted
+    #runs-on: ${{ matrix.job.os }}
     strategy:
       fail-fast: false
       matrix:
@@ -284,6 +285,7 @@ jobs:
   # The fallback for the flutter version, we use Sciter for 32bit Windows.
   build-for-windows-sciter:
     name: ${{ matrix.job.target }} (${{ matrix.job.os }})
+    runs-on: self-hosted
     runs-on: ${{ matrix.job.os }}
     # Temporarily disable this action due to additional test is needed.
     # if: false
